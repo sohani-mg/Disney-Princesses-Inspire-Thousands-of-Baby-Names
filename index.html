@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>Disney Princesses inspire thousands of baby names</title>
+
+  <!-- Google fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+    rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-size: 20px;
+      font-family: Georgia, 'Times New Roman', Times, serif;
+      text-rendering: optimizeLegibility;
+    }
+
+    .scrolly-container {
+        display: grid;
+        place-items: center;
+    }
+
+    .content {
+      max-width: 640px;
+      margin: auto;
+    }
+
+    .header {
+      padding: 3vw 0;
+    }
+
+    a {
+      color: #f05349;
+    }
+
+    .footer {
+      background: #ffffff;
+      text-align: center;
+      font-size: 0.8vw;
+      margin-top: 4vw;
+      padding: 4vw 0;
+    }
+
+    figure {
+      margin: 0;
+      padding-bottom: 1.2vw;
+      width: 100%;
+      height: 100%;
+    }
+
+    figcaption {
+      font-size: 0.8vw;
+      text-align: center;
+      margin-top: 0.5vw;
+      color: #666;
+    }
+
+    h1 {
+      font-family: 'Lora', Georgia, serif;
+      font-weight: bold;
+      font-size: 3vw;
+      line-height: 1.1;
+    }
+
+    .subhead {
+      font-family: 'Lora', Georgia, serif;
+    }
+
+    iframe,
+    video {
+      max-width: 100%;
+    }
+
+    p {
+      line-height: 1.6;
+      margin: 0;
+      padding-bottom: 1.2vw;
+    }
+
+    ul {
+      margin: 0;
+      padding-bottom: 1vw;
+      line-height: 1.6;
+    }
+
+    iframe {
+      padding-bottom: 1.2vw;
+    }
+
+    .full-width figure {
+      text-align: center;
+      width: 60%;
+      height: 100%;
+    }
+
+    code {
+      font-family: 'Courier New', monospace;
+      background: #fff880;
+    }
+
+    /* margin on mobile */
+    @media (max-width: 640px) {
+      body {
+        font-size: 18px;
+      }
+
+      .content {
+        padding-left: 0.5vw;
+        padding-right: 0.5vw;
+      }
+    }
+  </style>
+  <link href="scrolly-styles.css" rel="stylesheet">
+  <script src="https://unpkg.com/intersection-observer@0.5.1/intersection-observer.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/scrollama/3.2.0/scrollama.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.3.0/d3.min.js"></script>
+</head>
+
+<body>
+    <div class="content">
+        <div class="header">
+          <h1>Disney Princesses Influence Thousands of Baby Names</h1>
+        </div>
+        <div class="byline">
+          <p>By Sohani Goonetillake</a></p>
+        </div>
+        <p>Disney movies have skyrocketed the popularity of the following baby names: Tiana, Elsa, Raya, Mirabel and Moana. After examining the Social Security Administration's data on baby names, we found that after the release of a Disney movie, the popularity of the protagonist's name grew exponentially. <p> Here are some of the most common Disney princesses people have named their children after: </p>
+      </div>
+
+    <div class="figure">
+        <img src="Disney Princess Baby Name Artboard.png" style="width: 600px; height: auto; display: block; margin: 0 auto;">
+    </div>
+    <div class="content">
+    <p>Tiana is the most popular by far! However, it is important to note that Moana and Mirabel are likely lower because their name belongs to an ethnic minority.</p>
+    <p>Scroll down to take a closer look at each princess name's populariy growth and where it spiked. </p>
+</div>
+
+  <section id="scrolly-images" class="scrolly-container">
+    <div class="sticky-thing">
+      <img src="Tiana1.png">
+    </div>
+    <div class="steps-container">
+      <div class="step" id="step1">
+        <div>
+          <p>Let's start with Tiana from "The Princess and The Frog".
+            </p>
+        </div>
+      </div>
+      <div class="step" id="step2">
+        <p>Then the second most popular: Elsa from "Frozen".</p>
+      </div>
+      <div class="step" id="step3">
+        <p>Followed by Raya from "Raya and the Last Dragon".
+        </p>
+      </div>
+      <div class="step" id="step4">
+        <p>Mirabel from "Encanto" was the most recent spike.        </p>
+      </div>
+      <div class="step" id="step5">
+        <p>And finally, Moana has a considerably lower popularity. But considering the amount of babies named 'Moana' averaged close to zero before the movie came out, that's a pretty considerable increase.</p>
+      </div>
+    </div>
+  </section>
+  <div class="content">
+  <div class="footer">
+    <div class="content">
+      <p>You can view the code for this page <a href="https://github.com/sohani-mg/the-powerpop-girls">here</a> and the data analysis <a href="https://github.com/sohani-mg/powerpopGirlsDataAnalysis">here</a></p>
+    </div>
+  </div>
+
+  <script>
+    /*************
+    
+    This is the JavaScript that makes the scrolly work 
+    
+    *************/
+
+    /* 
+    This part attaches a scroll to the element with id="scrolly-images"    
+    */
+    (() => {
+      const scroller = scrollama()
+
+      scroller
+        .setup({
+          parent: document.querySelector("#scrolly-images"),
+          step: ".step",
+          offset: 0.6,
+          debug: false,
+        })
+        .onStepEnter(function ({ element, index, direction }) {
+          const event = new CustomEvent("stepin", { detail: { direction: direction } })
+          element.dispatchEvent(event)
+        })
+        .onStepExit(function ({ element, index, direction }) {
+          const event = new CustomEvent("stepout", { detail: { direction: direction } })
+          if (direction === "up" && element.previousElementSibling) {
+            const event = new CustomEvent("stepin", { detail: { direction: direction } })
+            element.previousElementSibling.dispatchEvent(event)
+          }
+        })
+
+      window.addEventListener("resize", scroller.resize)
+    })()
+
+    /*
+    This part sets up your actions. In this case, it's changing the image in the scrolly container.
+    */
+    d3.select("#step1").on('stepin', (e) => {
+      d3.select(e.target.closest(".scrolly-container")).select("img").attr("src", "Tiana1.png") 
+    })
+    d3.select("#step2").on('stepin', (e) => {
+      d3.select(e.target.closest(".scrolly-container")).select("img").attr("src", "Elsa2.png"); 
+    })
+
+    d3.select("#step3").on('stepin', (e) => {
+      d3.select(e.target.closest(".scrolly-container")).select("img").attr("src", "Raya3.png")
+    })
+
+    d3.select("#step4").on('stepin', (e) => {
+      d3.select(e.target.closest(".scrolly-container")).select("img").attr("src", "Mirabel4.png")
+    })
+
+    d3.select("#step5").on('stepin', (e) => {
+      d3.select(e.target.closest(".scrolly-container")).select("img").attr("src", "Moana5.png")
+    })
+
+  </script>
+  <style>
+    /* Change this to adjust the padding between steps */
+    .step {
+      margin-bottom: 70vh;
+    }
+  </style>
+
+</body>
+
+</html>
